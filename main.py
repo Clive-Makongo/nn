@@ -22,14 +22,30 @@ class NeuralNetwork:
     def deriv_sigmoid(self, x):
         return x * (1 - x)
 
+    
+    # Activation
+    def forward(self, X):
+        self.activations = [X]
 
+        print(f"Input: {X}")
 
+        for i in range(len(self.weights)):
+            net = np.dot(self.activations[-1], self.weights[i]) + self.biases[i]
+            print(f"Layer {i+1} pre-activation: {net}")
 
-## Need code for a node
+            #self.activations.append(self.sigmoid(net))
 
-## Weights
+            activation = self.sigmoid(net)
+            print(f"Layer {i+1} activation: {activation}")
+            
+            self.activations.append(activation)
 
-## Am I Biased?
+        
+        return self.activations[-1]
+
+## Weights X
+
+## Am I Biased? X
 
 ## Output
 
