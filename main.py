@@ -7,7 +7,13 @@ class NeuralNetwork:
         self.weights = []
         self.biases = []
 
-        #initiali
+        #initialise weights and bias
+        for i in range(len(layer_sizes) - 1):
+            w = np.random.randn(layer_sizes[i], layer_sizes[i+1]) * 0.01
+            b = np.zeros((1, layer_sizes[i+1]))
+            self.weights.append(w)
+            self.biases.append(b)
+
 
 
 
