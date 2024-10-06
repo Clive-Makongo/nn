@@ -13,6 +13,14 @@ class NeuralNetwork:
             b = np.zeros((1, layer_sizes[i+1]))
             self.weights.append(w)
             self.biases.append(b)
+        
+    # Sigmoid
+    def sigmoid(self, x):
+        return 1 / (1 + np.exp(-x))
+
+    # Sig deriv
+    def deriv_sigmoid(self, x):
+        return x * (1 - x)
 
 
 
