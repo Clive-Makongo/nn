@@ -46,9 +46,18 @@ class NeuralNetwork:
 
     def backward(self, X, y, learning_rate):
         m = y.shape[0]
-        delta = self.activations[-1] - y
+        delta = self.activations[-1] - y          # Calc Error
 
         for i in range(len(self.weights) - 1, -1, -1):
+            dW = np.dot(self.activations[i].T, delta) / m
+            db = np.sum(delta, axis=0, keepdims=True) / m
+
+            if i > 0:
+                delta = np.dot(delta, self.weights[i].T) * self.sigmoid_derivative(self.activations[i])
+            
+            self.weights[i] -= learning_rate * dW
+            self.biases[i] -= learning_rate * db
+
 
 ## Weights X
 
