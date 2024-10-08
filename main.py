@@ -30,11 +30,12 @@ class NeuralNetwork:
         print(f"Input: {X}")
 
         for i in range(len(self.weights)):
-            net = np.dot(self.activations[-1], self.weights[i]) + self.biases[i]
+            #net = np.dot(self.activations[-1], self.weights[i]) + self.biases[i]
+            prev_activation = self.activations[-1]
+            net = np.dot(prev_activation, self.weights[i]) + self.biases[i]
             print(f"Layer {i+1} pre-activation: {net}")
-
+            
             #self.activations.append(self.sigmoid(net))
-
             activation = self.sigmoid(net)
             print(f"Layer {i+1} activation: {activation}")
             
@@ -42,6 +43,12 @@ class NeuralNetwork:
 
         
         return self.activations[-1]
+
+    def backward(self, X, y, learning_rate):
+        m = y.shape[0]
+        delta = self.activations[-1] - y
+
+        for i in range(len(self.weights) - 1, -1, -1):
 
 ## Weights X
 
