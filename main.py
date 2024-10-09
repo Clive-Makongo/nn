@@ -78,10 +78,10 @@ if __name__ == "__main__":
     y = np.array([[0], [1], [1], [0]])
 
     # Create and train the neural network
-    nn = NeuralNetwork([2, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1])  # play with layers
+    nn = NeuralNetwork([2, 4, 1])  # play with layers
     nn.train(X, y, epochs=100, learning_rate=0.1)
 
-    # Test the network
+    # Test the networktat
     for i in range(len(X)):
         prediction = nn.forward(X[i:i+1])
         print(f"Input: {X[i]}, Predicted Output: {prediction[0][0]:.4f}, Actual Output: {y[i][0]}")
